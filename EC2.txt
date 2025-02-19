@@ -1,0 +1,173 @@
+EC2
+=====
+1) What is meant by 0 down time ?
+2) What blue green deployment ?
+3) How many ways can we increase volume? Tell me the commands?
+4) What language app are you working on ?
+5) Diff between stopping and terminating the instances?
+6) I have a 1 instance in that instance inside an application but i don't want to
+access the application, can you access it only inside? What do you do?
+7) i am getting a timed_out error for this the sg and private key is in good condition?
+How can you resolve it?
+8) How do you keep a secure instance in aws ??
+9) How do you make a connection between EC2 and S3??
+10)Difference between region and availability zone?
+11) How to find how long the server is running?
+12) what is Assume role and what is the use of Assume role
+13) use of profile instance?
+14) How ec2 instance communicate with s3 bucket
+A: An EC2 instance communicates with an S3 bucket using the AWS API, typically by attaching an IAM role to the EC2 instance that grants it the necessary permissions to access the S3 bucket, allowing the instance to read, write, or delete data within the bucket over the network through the AWS service endpoints; essentially, the communication happens through secure, authenticated requests over the internet
+
+15) Tell me the purchase plans of an ec2?
+	On-demand instances.
+	Savings plans.
+	Reserved instances.
+	Spot instances.
+	Dedicated hosts.
+	Dedicated instances.
+	Capacity reservations.
+
+16) Tell me a spot and reserved instance?
+A: Spot instances are cheaper but can be interrupted, while reserved instances are more expensive but are guaranteed to be available. 
+
+17) What is an instance profile?
+A: An instance profile in AWS is a container that holds an IAM role and passes that role's information to an EC2 instance. This allows the instance to assume the role's permissions. 
+
+18) what is zombie process
+A: A "zombie process" in the context of EC2 (Elastic Compute Cloud) refers to a process on a Linux instance that has finished executing but still remains in the system's process table because its parent process hasn't properly "reaped" it, essentially leaving a "dead" process taking up a small amount of system memory and potentially causing issues if too many accumulate; this is the same concept as a zombie process in standard Linux systems
+
+19) Overnight the cost of instance has increased a lot? What do you suggest?
+A: Periodically review your AWS environment and identify any unused resources, such as EC2, EBS snapshots, or EBS volumes, and delete them to save on storage costs. Remove unused instances that are in a stopped state, as they can still incur costs. You can automate this process by using AWS Lambda or a third-party tool
+
+20) Difference between Iam role and instance profile
+A: Roles are designed to be “assumed” by other principals which do define “who am I?”, such as users, Amazon services, and EC2 instances. An instance profile, on the other hand, defines “who am I?” Just like an IAM user represents a person, an instance profile represents EC2 instances.
+
+21) EC2 family types?
+
+22) What is the spot instance and when do we go with the spot instance?
+A: A "spot instance" is a type of cloud computing resource offered at a significantly discounted price compared to standard "on-demand" instances, essentially allowing you to bid on unused compute capacity from a cloud provider like AWS, making it ideal for workloads that can handle occasional interruptions and prioritize cost savings over guaranteed uptime; use spot instances when you need to run flexible, fault-tolerant tasks like large-scale data processing, batch jobs, or background processing where cost is the primary concern and brief disruptions are acceptable. 
+
+23) what is sticky session in Load balancer
+A: A sticky session is a load balancing technique that directs a user's requests to the same server for the duration of a session. It's also known as session affinity or session persistence. 
+
+24) How to change family type?
+
+25) ami vs snapshot
+A: n Amazon EC2, an Amazon Machine Image (AMI) backs up an entire server, while a snapshot backs up a single volume. AMIs are used to create new instances, while snapshots are used for backup and recovery
+
+26) types of ami
+A: There are several types of AMIs (Amazon Machine Images) in AWS, including shared AMIs, EBS-backed AMIs, and instance store-backed AMIs. 
+
+
+27) end user unable to access URL (https://atcd.com) product URL, whitelisting his
+IP but he is not accessing the URL? How will you check that?
+A: Could be ACL issue
+
+28) my product will be reaching up to 200 tps for sec that is customer expectation,
+based on that configure 10 api servers and other servers,they have performing a
+node test in first node test we were able to achieve the 200tps they are in live
+facing some issue?how do we handle the traffic?
+
+29) In an auto scaling group we have multiple configurations, we do a number of
+configurations,when we say sustained prose there will be a couple of
+options,what are the options,why is it used,what activity do those options do?
+
+30) if we want to launch an instance what are the prereq that we want in terms of
+resources
+
+31) Can we attach multiple vol to one instance.?
+A: Yes, you can attach multiple Amazon Elastic Block Store (EBS) volumes to a single Amazon EC2 instance. You can also attach a single volume to multiple instances using Amazon EBS Multi-Attach
+
+32) Can we attach one volume to multiple instance.?
+A: Yes, you can attach a single Amazon EBS volume to multiple Amazon EC2 instances using the Multi-Attach feature. This feature is useful for applications that perform concurrent write operations. 
+
+
+33) diff bet. EBS vs S3.
+How EBS and S3 work
+EBS
+Similar to hard drives attached to a computer, EBS volumes can be used to create virtual disks for application hosting, databases, and plug-and-play devices. 
+S3
+S3 is designed to store large numbers of user files and backups, and can be used for static website hosting, media distribution, version management, and more. 
+
+
+34) How can s3 be used with ec2 instances?
+Steps to grant access to an S3 bucket 
+Create an IAM profile role that grants access to S3
+Attach the IAM profile to the EC2 instance
+Validate permissions on the S3 bucket
+Validate network connectivity from the EC2 instance to S3
+Validate access to S3 buckets
+
+35) Tell me the difference b/w the EBS,EFS and S3?
+EBS
+Storage type: Block storage similar to hard drives attached to a computer 
+Access: Can only be accessed from a single EC2 instance 
+Use cases: Ideal for persistent storage requirements, databases, and other low-latency applications 
+EFS
+Storage type: File storage that can be mounted across multiple regions 
+Access: Can be accessed via multiple EC2 machines and AWS Services 
+Use cases: Ideal for shared file storage needs, distributed applications, and content management systems 
+S3
+Storage type: Object storage designed for storing large numbers of user files and backups 
+Access: Publicly accessible and does not require a server 
+Use cases: Ideal for storing vast numbers of data as backups or user files, hosting static website content, and archivin
+
+
+36) I have one instance ,i lost my keypair but I want to login to the meachin. How will
+you do that?
+A: If you've lost your key pair for an EC2 instance, the most reliable way to regain access is to use the AWS EC2 Instance Connect service, which allows you to connect to your instance directly through the AWS console without needing a separate key pair, provided your instance is running a compatible Amazon Linux version; if not, you might need to create a new key pair, create an AMI from your existing instance, and launch a new instance using the new key pair to access your data
+
+37) I have one instance where the traffic is high,what can I do about that?
+38) in AWS when the load is high the alternative of the opposition when the cpu and
+memory and how can i remedy that?
+39) There is an instance that has been terminated and furtherly u created a new
+one, while the ssh fingerprint already exists in jenkins because of that you are
+unable to do ssh, what would be your inputs to fix this issue? any automation that
+you did
+40) how do you attach another volume with the EBS volume in an instance?
+A:o attach another EBS volume to an existing EC2 instance, navigate to the "Volumes" section in the AWS console, select the desired volume, click "Actions" > "Attach Volume", then choose the target EC2 instance from the list, ensuring it is in the same Availability Zone as the volume; you can also specify a device name for the volume to access it within the instance once attached. 
+
+41) IP address classes?
+
+42) What is a subnet mask?
+
+43) What is the region?
+A:In Amazon Web Services (AWS), a region is a geographical area that contains data centers and multiple Availability Zones (AZs). 
+
+44) What is the availability zone?
+A:In Amazon Web Services (AWS), an Availability Zone (AZ) is a data center or set of data centers within an AWS Region. AZs are designed to operate independently and failover to other AZs in the same region if needed. 
+
+45) what is the difference between Linux and ubuntu
+Linux is a Unix-based operating system family, while Ubuntu is a specific distribution of Linux. Ubuntu is designed to be more user-friendly than other Linux distributions. 
+
+46) write a shell script for knowing how many ports are listening or not?
+
+47) What is the apache module?
+A: "Apache module" is a piece of code that can be added to the Apache web server to extend its functionality, allowing administrators to customize the server by adding specific features like authentication, encryption, content type support, or logging, depending on their needs; essentially acting like a plugin that can be dynamically loaded to enhance the core server capabilities. 
+
+48)How are you using the Nginx server?
+A: You can use NGINX as a web server, reverse proxy, API gateway, and more. NGINX is an open-source web server software that's designed for high performance and stability. 
+
+49)What storage services have you worked on?
+
+50)What about EBS and EFS?
+
+51) What are the different types of instance types in ec2?
+A: Amazon Elastic Compute Cloud (EC2) offers a variety of instance types, including general purpose, compute optimized, and memory optimized
+
+52) How do you take auto backup of an application data which is running on ec2?
+To take automatic backups of an application running on an EC2 instance, you can use the AWS Backup service, which allows you to create scheduled backup plans that automatically capture snapshots of your EC2 volumes, ensuring application data is regularly backed up; for application-consistent backups, use pre and post scripts within your backup plan to ensure data is in a consistent state before snapshotting. 
+
+53) What are the HTTP port number and HTTPS port number?
+HTTP (port 80):
+This is the standard port for unencrypted web traffic using the Hypertext Transfer Protocol. 
+HTTPS (port 443):
+This is the standard port for encrypted web traffic using the Hypertext Transfer Protocol Secure, which provides a secure connection between a web browser and a server. 
+
+54) What is the ssh port number?
+The default port number for Secure Shell (SSH) is 22. This port is used to enable remote administration access to a VM. 
+
+55) Root Vol of ec2 gone corrupted, so my ec2 is not responding,
+56) How are you going to recover from this situation?
+57) A 3 layer architecture is there with one Region, 1 AZ, application on 1 ec2,
+how to scale this appl with HA/Failover
