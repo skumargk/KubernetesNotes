@@ -1,4 +1,4 @@
-EC2
+EC2 -->Elastic Compute Cloud
 =====
 1) What is meant by 0 down time ?
 2) What blue green deployment ?
